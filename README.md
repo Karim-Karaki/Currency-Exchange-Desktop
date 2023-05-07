@@ -2,6 +2,7 @@ Currency Exchange Desktop Application - Technical Documentation
 
 1. Overview
 
+Michael Ferzli's original lab submission was used because he got the highest grade in the group on said lab.
 This technical documentation provides an overview of the project structure, general architecture, and high-level architecture of the Currency Exchange Desktop application, a Java-based desktop application for currency exchange services.
 
 2. Project Structure
