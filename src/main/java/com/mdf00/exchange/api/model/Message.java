@@ -15,7 +15,6 @@ public class Message {
 
     private String username;
 
-    // Add the getter and setter methods
     public String getUsername() {
         return username;
     }

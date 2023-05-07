@@ -224,25 +224,20 @@ public class Statistics implements Initializable {
 
     }
     public Map<Date, Float> getAverageDailyRate(List<Transaction> transactions) {
-        // A map to store the total rate and count for each day
         Map<String, float[]> dailyRateInfo = new HashMap<>();
 
         for (Transaction transaction : transactions) {
-            // Simplify the date to just day (Assuming addedDate is of Date type)
             String date = (transaction.getAddedDate()).substring(0,10);
 
-            // Calculate the rate
             float rate = transaction.getUsdAmount() / transaction.getLbpAmount();
 
-            // If usdToLbp is false, then the rate is the other way around
             if (!transaction.getUsdToLbp()) {
                 rate = 1 / rate;
             }
 
-            // Update the total rate and count for the day
             float[] rateInfo = dailyRateInfo.getOrDefault(date, new float[]{0, 0});
-            rateInfo[0] += rate;  // Update total rate
-            rateInfo[1] += 1;  // Update count
+            rateInfo[0] += rate;
+            rateInfo[1] += 1;
             dailyRateInfo.put(date, rateInfo);
         }
 
@@ -312,15 +307,12 @@ public class Statistics implements Initializable {
 
 
     private void displayingraph(TreeMap<Date,Float> data){
-        // Create a SimpleDateFormat object to format the Date object to "yyyy-MM-dd"
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
-        // Create a XYChart.Series object
         XYChart.Series<String, Number> series = new XYChart.Series<>();
         series.setName("Rate by Day");
 
         for (Map.Entry<Date, Float> entry : data.entrySet()){
-            // Convert Date to String with "yyyy-MM-dd" format
             String date = sdf.format(entry.getKey());
 
             // Add data to series
@@ -362,7 +354,7 @@ public class Statistics implements Initializable {
 
             @Override
             public void onFailure(Call<List<Transaction>> call, Throwable throwable) {
-
+                System.out.println("API call failed: " + throwable.getMessage());
             }
         });
     }
@@ -421,6 +413,7 @@ public class Statistics implements Initializable {
             }
             @Override
             public void onFailure(Call<com.mdf00.exchange.api.model.Statistics> call, Throwable throwable) {
+                System.out.println("API call failed: " + throwable.getMessage());
 
             }
         });

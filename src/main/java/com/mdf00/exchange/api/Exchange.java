@@ -43,9 +43,4 @@ public interface Exchange {
     @GET("/getUserFromId")
     Call<User> getUserFromId(@Query("user_id") int userId);
 
-
-
-
-
-
 }

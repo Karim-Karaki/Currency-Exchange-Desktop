@@ -37,6 +37,8 @@ public class Transactions implements Initializable {
 
                     @Override
                     public void onFailure(Call<List<Transaction>> call, Throwable throwable) {
+                        System.out.println("API call failed: " + throwable.getMessage());
+
                     }
                 });
 

@@ -98,8 +98,4 @@ public class Currency_game {
         nextQuestion();
     }
 
-    @FXML
-    void handleStopGame(ActionEvent event) {
-        // Implement your game stopping logic here, e.g., close the window or show a "Game Over" message
-    }
 }

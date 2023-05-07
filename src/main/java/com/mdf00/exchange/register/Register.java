@@ -35,10 +35,12 @@ public class Register implements PageCompleter {
                  }
                  @Override
                  public void onFailure(Call<Token> call, Throwable throwable){
-                                                                                                                                                         } });
+                     System.out.println("API call failed: " + throwable.getMessage());
+                 } });
                 }
                 @Override
                 public void onFailure(Call<User> call, Throwable throwable) {
+                    System.out.println("API call failed: " + throwable.getMessage());
                 }
         });
     }

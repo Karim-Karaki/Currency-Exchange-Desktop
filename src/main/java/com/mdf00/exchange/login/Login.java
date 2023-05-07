@@ -1,7 +1,6 @@
 package com.mdf00.exchange.login;
 
 import com.mdf00.exchange.Authentication;
-import com.mdf00.exchange.CurrentUser;
 import com.mdf00.exchange.OnPageCompleteListener;
 import com.mdf00.exchange.PageCompleter;
 import com.mdf00.exchange.api.ExchangeService;
@@ -26,17 +25,15 @@ public class Login implements PageCompleter {
          public void onResponse(Call<Token> call, Response<Token>
                  response) {
              Authentication.getInstance().saveToken(response.body().getToken());
-             System.out.println(user.getId());
-             System.out.println(response.body());
-             CurrentUser.getInstance().setUser(user);
-             System.out.println(CurrentUser.getInstance().getUser().getId());
+
+
              Platform.runLater(() -> {
                  onPageCompleteListener.onPageCompleted();
              });
          }
          @Override
          public void onFailure(Call<Token> call, Throwable throwable) {
-
+             System.out.println("API call failed: " + throwable.getMessage());
          }
      });
     }

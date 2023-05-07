@@ -42,8 +42,9 @@ public class Rates {
             }
 
             @Override
-            public void onFailure(Call<ExchangeRates> call, Throwable
-                    throwable) {
+            public void onFailure(Call<ExchangeRates> call, Throwable throwable) {
+                System.out.println("API call failed: " + throwable.getMessage());
+
             }
         });
     }
@@ -72,6 +73,8 @@ public class Rates {
 
                 @Override
                 public void onFailure(Call<Object> call, Throwable throwable) {
+                    System.out.println("API call failed: " + throwable.getMessage());
+
                 }
             });
 

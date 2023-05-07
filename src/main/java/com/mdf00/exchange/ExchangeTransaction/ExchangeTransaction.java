@@ -112,7 +112,7 @@ public class ExchangeTransaction {
 
                     @Override
                     public void onFailure(Call<Offer> call, Throwable throwable) {
-
+                        System.out.println("API call failed: " + throwable.getMessage());
                     }
                 });
     }
@@ -133,16 +133,13 @@ public class ExchangeTransaction {
                     @Override
                     public void onResponse(Call<Offer> call, Response<Offer> response) {
                         if (response.isSuccessful()) {
-                            // Handle successful response
-                            // For example, refresh the list of offers
                             loadOffers();
                         }
                     }
 
                     @Override
-                    public void onFailure(Call<Offer> call, Throwable t) {
-                        // Handle failure
-                        // This usually means there was a network error or an exception while processing the response
+                    public void onFailure(Call<Offer> call, Throwable throwable) {
+                        System.out.println("API call failed: " + throwable.getMessage());
                     }
                 });
     }
@@ -158,7 +155,7 @@ public class ExchangeTransaction {
                     Platform.runLater(() -> {
                         offersTableView.getItems().setAll(
                                 offers.stream()
-                                        .filter(offer -> !offer.isAccepted() ) // Check if the offer ID is not equal to the current user ID
+                                        .filter(offer -> !offer.isAccepted() )
                                         .collect(Collectors.toList())
                         );
                     });
@@ -167,7 +164,7 @@ public class ExchangeTransaction {
 
             @Override
             public void onFailure(Call<List<Offer>> call, Throwable throwable) {
-
+                System.out.println("API call failed: " + throwable.getMessage());
             }
         });
 

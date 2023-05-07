@@ -107,7 +107,7 @@ public class Parent implements Initializable, OnPageCompleteListener {
                 case STATISTICS -> "/com/mdf00/exchange/Statistics/Statistics.fxml"; // Add the new resource
                 case OFFERS -> "/com/mdf00/exchange/UserExchangeTransaction/ExchangeTransaction.fxml";
                 case FORUM -> "/com/mdf00/exchange/Forum/Forum.fxml";
-                case MINIGAME -> "/com/mdf00/exchange/Minigame/test.fxml";
+                case MINIGAME -> "/com/mdf00/exchange/Minigame/currency_game.fxml";
                 default -> null;
             };
         }
